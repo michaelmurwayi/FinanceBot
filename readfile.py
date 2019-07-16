@@ -26,3 +26,4 @@ with open('accounts.csv', 'r') as csvFile:
             item["Branch_Name"] = row[5]
             item["PhoneNumber"] = row[6]
             print(Account)
+
