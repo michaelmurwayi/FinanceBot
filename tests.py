@@ -1,23 +1,55 @@
 import unittest
-import csv
-import readfile
+from bank import create_account, create_accounts
 
-class TestReadFile(unittest.TestCase):
-    def test_ReadFile(self)-> None:
-        options = "accounts.csv"    
-        self.assertEqual(readfile.ReadFile(options), 
-        [
-            {
-                "First_Name": "Michael ",
-                "Last_Name": " Murwayi",
-                "Account_Name": "MichaelMurwayi",
-                "Account_Number": "420",
-                "Account_Type": "saving",
-                "Branch_Name": "Thika",
-                "PhoneNumber": " +254746256084",
-            }
+
+expected_value_for_account = {
+    "first_name": "Michael ",
+    "last_name": " Murwayi",
+    "account_name": "MichaelMurwayi",
+    "account_number": "420",
+    "account_type": "saving",
+    "branch_name": "Thika",
+    "phonenumber": " +254746256084",
+}
+
+expected_value_for_accounts = {
+    "first_name": "Mark",
+    "last_name": "Anderson",
+    "account_name": "MarkAnderson",
+    "account_number": "421",
+    "account_type": "fixed",
+    "branch_name": "kajiado",
+    "phonenumber": "+254790134102",
+}
+{
+    "first_name": "Michael ",
+    "last_name": " Murwayi",
+    "account_name": "MichaelMurwayi",
+    "account_number": "420",
+    "account_type": "saving",
+    "branch_name": "Thika",
+    "phonenumber": " +254746256084",
+}
+
+
+class TestBank(unittest.TestCase):
+    def test_create_account(self):
+        row = [
+            "Michael ",
+            " Murwayi",
+            "MichaelMurwayi",
+            "420",
+            "saving",
+            "Thika",
+            " +254746256084",
         ]
-        )
+        account = create_account(row)
+        self.assertEqual(account, expected_value_for_account)
+
+    def test_create_accounts(self):
+        file_name = "accounts.csv"
+        self.assertEqual(create_accounts(file_name), expected_value_for_accounts)
+
 
 if __name__ == "__main__":
     unittest.main(module="tests")
