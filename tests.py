@@ -1,10 +1,11 @@
 import unittest
-from bank import create_account, create_accounts
+from bank import create_account, create_accounts, create_accounts_from_csv
 
+unittest.TestCase.maxDiff = None
 
 expected_value_for_account = {
     "first_name": "Michael ",
-    "last_name": " Murwayi",
+    "last_name": "Murwayi",
     "account_name": "MichaelMurwayi",
     "account_number": "420",
     "account_type": "saving",
@@ -12,19 +13,20 @@ expected_value_for_account = {
     "phonenumber": " +254746256084",
 }
 
+
 expected_value_for_accounts = [
     {
-        "first_name": "Michael ",
-        "last_name": " Murwayi",
+        "first_name": "Michael",
+        "last_name": "Murwayi",
         "account_name": "MichaelMurwayi",
         "account_number": "420",
         "account_type": "saving",
         "branch_name": "Thika",
-        "phonenumber": " +254746256084",
+        "phonenumber": "+254746256084",
     },
     {
-        "first_name": "Mark ",
-        "last_name": " Anderson",
+        "first_name": "Mark",
+        "last_name": "Anderson",
         "account_name": "MarkAnderson",
         "account_number": "421",
         "account_type": "fixed",
@@ -38,7 +40,7 @@ class TestBank(unittest.TestCase):
     def test_create_account(self):
         row = [
             "Michael ",
-            " Murwayi",
+            "Murwayi",
             "MichaelMurwayi",
             "420",
             "saving",
@@ -51,17 +53,17 @@ class TestBank(unittest.TestCase):
     def test_create_accounts(self):
         rows = [
             [
-                "Michael ",
-                " Murwayi",
+                "Michael",
+                "Murwayi",
                 "MichaelMurwayi",
                 "420",
                 "saving",
                 "Thika",
-                " +254746256084",
+                "+254746256084",
             ],
             [
-                "Mark ",
-                " Anderson",
+                "Mark",
+                "Anderson",
                 "MarkAnderson",
                 "421",
                 "fixed",
@@ -70,6 +72,12 @@ class TestBank(unittest.TestCase):
             ],
         ]
         self.assertEqual(create_accounts(rows), expected_value_for_accounts)
+
+    def test_create_accounts_from_csv(self):
+        csv_file = "accounts.csv"
+        self.assertEqual(
+            create_accounts_from_csv(csv_file), expected_value_for_accounts
+        )
 
 
 if __name__ == "__main__":
