@@ -1,5 +1,4 @@
 import csv
-import logging
 
 
 def create_account(row):
@@ -45,6 +44,5 @@ def create_accounts_from_csv(csvfile):
     with open(csvfile, "r") as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
-            # import pdb;pdb.set_trace()
             accounts.append(create_account(row))
     return accounts
