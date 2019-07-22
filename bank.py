@@ -6,6 +6,7 @@ def create_account(row):
     """
     creates a single account from a row of account details
     """
+
     account = {
         "first_name": row[0],
         "last_name": row[1],
@@ -15,17 +16,17 @@ def create_account(row):
         "branch_name": row[5],
         "phonenumber": row[6],
     }
-    
     if account["first_name"] == "":
-        logging.error("Missing frist name on record= %s", row)
+        return "Missing frist name on record", row
     elif account["last_name"] == "":
-        logging.error("Missing second name on the record= %s", row)
+        return "Missing second name on the record ", row
     elif type(account["account_number"]) != int:
-        logging.error("Account number must be a Number= %s", row)
-    elif account["account_type"] != "saving" and row[4] != "fixed":
-        logging.error(" provide valid account type= %s", row)
-    
-    return account
+        return "Account number must be a Number", row
+    elif account["account_type"] != "saving" and account["account_type"] != "fixed":
+        return "provide valid account type", row
+    else:
+
+        return account
 
 
 def create_accounts(rows):
@@ -44,12 +45,6 @@ def create_accounts_from_csv(csvfile):
     with open(csvfile, "r") as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
+            # import pdb;pdb.set_trace()
             accounts.append(create_account(row))
     return accounts
-
-
-rows = [
-    ["Michael", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"],
-    ["Mark", "Anderson", "MarkAnderson", 421, "fixed", "kajiado", "+254790134102"],
-]
-print(create_accounts(rows))
