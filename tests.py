@@ -1,8 +1,6 @@
 import unittest
 from bank import create_account, create_accounts, create_accounts_from_csv
 
-maxDiff = None
-
 expected_value_for_account = {
     "first_name": "Michael ",
     "last_name": "Murwayi",
@@ -35,11 +33,11 @@ expected_value_for_accounts = [
     },
 ]
 
-
 class TestBank(unittest.TestCase):
     def test_create_account(self):
         row = [
             "Michael ",
+
             "Murwayi",
             "MichaelMurwayi",
             420,
@@ -95,7 +93,7 @@ class TestBank(unittest.TestCase):
         )
         self.assertEqual(create_account(row), expected_value)
 
-    def test_validation_of_account_type(self):
+    def test_validation_of_account_number(self):
         row = [
             "Michael",
             "Murwayi",
