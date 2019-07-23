@@ -1,10 +1,14 @@
 import unittest
+import logging
+from testfixtures import LogCapture
 from bank import create_account, create_accounts, create_accounts_from_csv
+
+unittest.TestCase.maxDiff = None
 
 expected_value_for_account = {
     "first_name": "Michael ",
-    "last_name": "Murwayi",
     "account_name": "MichaelMurwayi",
+    "last_name": "Murwayi",
     "account_number": 420,
     "account_type": "saving",
     "branch_name": "Thika",
@@ -32,12 +36,10 @@ expected_value_for_accounts = [
         "phonenumber": "+254790134102",
     },
 ]
-
 class TestBank(unittest.TestCase):
     def test_create_account(self):
         row = [
             "Michael ",
-
             "Murwayi",
             "MichaelMurwayi",
             420,
@@ -45,8 +47,7 @@ class TestBank(unittest.TestCase):
             "Thika",
             " +254746256084",
         ]
-        account = create_account(row)
-        self.assertEqual(account, expected_value_for_account)
+        self.assertEqual(create_account(row), expected_value_for_account)
 
     def test_create_accounts(self):
         rows = [
@@ -78,7 +79,15 @@ class TestBank(unittest.TestCase):
         )
 
     def test_validation_of_firstname(self):
-        row = ["", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"]
+        row = [
+            "",
+            "Murwayi",
+            "MichaelMurwayi",
+            420,
+            "saving",
+            "Thika",
+            "+254746256084",
+        ]
         expected_value = (
             "Missing frist name on record",
             ["", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"],
@@ -86,7 +95,15 @@ class TestBank(unittest.TestCase):
         self.assertEqual(create_account(row), expected_value)
 
     def test_validation_of_lastname(self):
-        row = ["Michael", "", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"]
+        row = [
+            "Michael",
+            "",
+            "MichaelMurwayi",
+            420,
+            "saving",
+            "Thika",
+            "+254746256084",
+        ]
         expected_value = (
             "Missing second name on the record ",
             ["Michael", "", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"],
@@ -98,7 +115,7 @@ class TestBank(unittest.TestCase):
             "Michael",
             "Murwayi",
             "MichaelMurwayi",
-            "420",
+            "baba",
             "saving",
             "Thika",
             "+254746256084",
@@ -109,12 +126,13 @@ class TestBank(unittest.TestCase):
                 "Michael",
                 "Murwayi",
                 "MichaelMurwayi",
-                "420",
+                "baba",
                 "saving",
                 "Thika",
                 "+254746256084",
             ],
         )
+    
         self.assertEqual(create_account(row), expected_value)
 
     def test_validation_of_account_type(self):

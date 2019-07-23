@@ -10,7 +10,7 @@ def create_account(row):
         "first_name": row[0],
         "last_name": row[1],
         "account_name": row[2],
-        "account_number": int(row[3]),
+        "account_number":row[3],
         "account_type": row[4],
         "branch_name": row[5],
         "phonenumber": row[6],
@@ -19,14 +19,15 @@ def create_account(row):
         return "Missing frist name on record", row
     elif account["last_name"] == "":
         return "Missing second name on the record ", row
-    elif type(account["account_number"]) != int:
-        return "Account number must be a Number", row
     elif account["account_type"] != "saving" and account["account_type"] != "fixed":
         return "provide valid account type", row
-    else:
+    elif type(account["account_number"]) != int:
+        try:
+            account["account_number"] = int(row[3])
+        except ValueError:
+            return("Account number must be a Number", row)
 
-        return account
-
+    return account
 
 def create_accounts(rows):
     """
@@ -45,4 +46,5 @@ def create_accounts_from_csv(csvfile):
         reader = csv.reader(csvfile)
         for row in reader:
             accounts.append(create_account(row))
+
     return accounts
