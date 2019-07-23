@@ -1,6 +1,4 @@
 import unittest
-import logging
-from testfixtures import LogCapture
 from bank import create_account, create_accounts, create_accounts_from_csv
 
 unittest.TestCase.maxDiff = None
