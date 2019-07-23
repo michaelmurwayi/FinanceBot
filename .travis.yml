@@ -1,7 +1,7 @@
 language: python
 install: 
-  - pip install pycodestyle
+  - pip install black
 
 script:
   - python -m unittest  tests
-  - pycodestyle bank.py
+  - black bank.py
