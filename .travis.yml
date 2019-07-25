@@ -1,7 +1,4 @@
 language: python
-install: 
-  - pip install black
-
 script:
   - python -m unittest  tests
-  - black bank.py
+ 
