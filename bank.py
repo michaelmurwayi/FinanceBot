@@ -10,7 +10,7 @@ def create_account(row):
         "firstname": row[0],
         "lastname": row[1],
         "accountname": row[2],
-        "accountnumber":row[3],
+        "accountnumber": row[3],
         "accounttype": row[4],
         "branchname": row[5],
         "phonenumber": row[6],
@@ -21,10 +21,10 @@ def create_account(row):
         try:
             account["accountnumber"] = int(row[3])
         except ValueError:
-            return("Account number must be a Number", row)
+            return ("Account number must be a Number", row)
 
-    
     return check_for_blanks_in_accounts(account)
+
 
 def create_accounts(rows):
     """
@@ -48,16 +48,12 @@ def create_accounts_from_csv(csvfile):
 
 
 def check_for_blanks_in_accounts(account):
-    if account["firstname"]=="":
-        return ("firstname is blank",account)
+    if account["firstname"] == "":
+        return ("firstname is blank", account)
     elif account["lastname"] == "":
         return ("lastname is blank", account)
     elif account["accountname"] == "":
         return ("accountname is blank", account)
-    elif account["accountnumber"] == "":
-        return ("accountnumber is blank", account)
-    elif account["accounttype"] == "":
-        return ("accounttype is blank", account)
     elif account["branchname"] == "":
         return ("branchname is blank", account)
     elif account["phonenumber"] == "":

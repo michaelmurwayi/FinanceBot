@@ -173,7 +173,7 @@ class TestBank(unittest.TestCase):
                 "0746256084",
             ],
         )
-        
+
         self.assertEqual(create_account(row), expected_value)
 
 
