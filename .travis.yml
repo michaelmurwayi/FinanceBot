@@ -1,0 +1,7 @@
+language: python
+install: 
+  - pip install pycodestyle
+
+script:
+  - python -m unittest  tests
+  - pycodestyle bank.py
