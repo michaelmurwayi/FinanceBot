@@ -7,27 +7,24 @@ def create_account(row):
     """
 
     account = {
-        "first_name": row[0],
-        "last_name": row[1],
-        "account_name": row[2],
-        "account_number":row[3],
-        "account_type": row[4],
-        "branch_name": row[5],
+        "firstname": row[0],
+        "lastname": row[1],
+        "accountname": row[2],
+        "accountnumber": row[3],
+        "accounttype": row[4],
+        "branchname": row[5],
         "phonenumber": row[6],
     }
-    if account["first_name"] == "":
-        return "Missing frist name on record", row
-    elif account["last_name"] == "":
-        return "Missing second name on the record ", row
-    elif account["account_type"] != "saving" and account["account_type"] != "fixed":
+    if account["accounttype"] != "saving" and account["accounttype"] != "fixed":
         return "provide valid account type", row
-    elif type(account["account_number"]) != int:
+    elif type(account["accountnumber"]) != int:
         try:
-            account["account_number"] = int(row[3])
+            account["accountnumber"] = int(row[3])
         except ValueError:
-            return("Account number must be a Number", row)
+            return ("Account number must be a Number", row)
 
-    return account
+    return check_for_blanks_in_accounts(account)
+
 
 def create_accounts(rows):
     """
@@ -48,3 +45,18 @@ def create_accounts_from_csv(csvfile):
             accounts.append(create_account(row))
 
     return accounts
+
+
+def check_for_blanks_in_accounts(account):
+    if account["firstname"] == "":
+        return ("firstname is blank", account)
+    elif account["lastname"] == "":
+        return ("lastname is blank", account)
+    elif account["accountname"] == "":
+        return ("accountname is blank", account)
+    elif account["branchname"] == "":
+        return ("branchname is blank", account)
+    elif account["phonenumber"] == "":
+        return ("phonenumber is blank", account)
+    else:
+        return account
