@@ -1,41 +1,51 @@
+"""
+Import python unittest module
+"""
 import unittest
 from bank import create_account, create_accounts, create_accounts_from_csv
 
 unittest.TestCase.maxDiff = None
 
-expected_value_for_account = {
-    "first_name": "Michael ",
-    "account_name": "MichaelMurwayi",
-    "last_name": "Murwayi",
-    "account_number": 420,
-    "account_type": "saving",
-    "branch_name": "Thika",
-    "phonenumber": " +254746256084",
+EXPECTEDACCOUNT = {
+    "firstname": "Michael ",
+    "accountname": "MichaelMurwayi",
+    "lastname": "Murwayi",
+    "accountnumber": 420,
+    "accounttype": "saving",
+    "branchname": "Thika",
+    "phonenumber": "0746256084",
 }
-
-
-expected_value_for_accounts = [
+EXPECTEDACCOUNTS = [
     {
-        "first_name": "Michael",
-        "last_name": "Murwayi",
-        "account_name": "MichaelMurwayi",
-        "account_number": 420,
-        "account_type": "saving",
-        "branch_name": "Thika",
-        "phonenumber": "+254746256084",
+        "firstname": "Michael",
+        "lastname": "Murwayi",
+        "accountname": "MichaelMurwayi",
+        "accountnumber": 420,
+        "accounttype": "saving",
+        "branchname": "Thika",
+        "phonenumber": "0746256084",
     },
     {
-        "first_name": "Mark",
-        "last_name": "Anderson",
-        "account_name": "MarkAnderson",
-        "account_number": 421,
-        "account_type": "fixed",
-        "branch_name": "kajiado",
-        "phonenumber": "+254790134102",
+        "firstname": "Mark",
+        "lastname": "Anderson",
+        "accountname": "MarkAnderson",
+        "accountnumber": 421,
+        "accounttype": "fixed",
+        "branchname": "kajiado",
+        "phonenumber": "0790134102",
     },
 ]
+
+
 class TestBank(unittest.TestCase):
+    """
+    tests for functions in bank.py file
+    """
+
     def test_create_account(self):
+        """
+        Tests create account :converts row to dictionary
+        """
         row = [
             "Michael ",
             "Murwayi",
@@ -43,11 +53,14 @@ class TestBank(unittest.TestCase):
             420,
             "saving",
             "Thika",
-            " +254746256084",
+            "0746256084",
         ]
-        self.assertEqual(create_account(row), expected_value_for_account)
+        self.assertEqual(create_account(row), EXPECTEDACCOUNT)
 
     def test_create_accounts(self):
+        """
+        Tests create accounts :converts rows into list
+        """
         rows = [
             [
                 "Michael",
@@ -56,84 +69,61 @@ class TestBank(unittest.TestCase):
                 420,
                 "saving",
                 "Thika",
-                "+254746256084",
+                "0746256084",
             ],
-            [
-                "Mark",
-                "Anderson",
-                "MarkAnderson",
-                421,
-                "fixed",
-                "kajiado",
-                "+254790134102",
-            ],
+            ["Mark", "Anderson", "MarkAnderson", 421, "fixed", "kajiado", "0790134102"],
         ]
-        self.assertEqual(create_accounts(rows), expected_value_for_accounts)
+        self.assertEqual(create_accounts(rows), EXPECTEDACCOUNTS)
 
     def test_create_accounts_from_csv(self):
+        """
+        Tests create account from csv: takes file and return list of accounts
+        """
         csv_file = "accounts.csv"
-        self.assertEqual(
-            create_accounts_from_csv(csv_file), expected_value_for_accounts
-        )
+        self.assertEqual(create_accounts_from_csv(csv_file), EXPECTEDACCOUNTS)
 
     def test_validation_of_firstname(self):
-        row = [
-            "",
-            "Murwayi",
-            "MichaelMurwayi",
-            420,
-            "saving",
-            "Thika",
-            "+254746256084",
-        ]
+        """
+        tests for missing firstname in accounts dictionary
+        """
+        row = ["", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "0746256084"]
         expected_value = (
-            "Missing frist name on record",
-            ["", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"],
+            "firstname is blank",
+            {
+                "firstname": "",
+                "lastname": "Murwayi",
+                "accountname": "MichaelMurwayi",
+                "accountnumber": 420,
+                "accounttype": "saving",
+                "branchname": "Thika",
+                "phonenumber": "0746256084",
+            },
         )
         self.assertEqual(create_account(row), expected_value)
 
     def test_validation_of_lastname(self):
-        row = [
-            "Michael",
-            "",
-            "MichaelMurwayi",
-            420,
-            "saving",
-            "Thika",
-            "+254746256084",
-        ]
+        """
+        tests for missing secondname in accounts dictionary
+        """
+        row = ["Michael", "", "MichaelMurwayi", 420, "saving", "Thika", "0746256084"]
         expected_value = (
-            "Missing second name on the record ",
-            ["Michael", "", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"],
+            "lastname is blank",
+            {
+                "firstname": "Michael",
+                "lastname": "",
+                "accountname": "MichaelMurwayi",
+                "accountnumber": 420,
+                "accounttype": "saving",
+                "branchname": "Thika",
+                "phonenumber": "0746256084",
+            },
         )
-        self.assertEqual(create_account(row), expected_value)
-
-    def test_validation_of_account_number(self):
-        row = [
-            "Michael",
-            "Murwayi",
-            "MichaelMurwayi",
-            "baba",
-            "saving",
-            "Thika",
-            "+254746256084",
-        ]
-        expected_value = (
-            "Account number must be a Number",
-            [
-                "Michael",
-                "Murwayi",
-                "MichaelMurwayi",
-                "baba",
-                "saving",
-                "Thika",
-                "+254746256084",
-            ],
-        )
-    
-        self.assertEqual(create_account(row), expected_value)
 
     def test_validation_of_account_type(self):
+        """
+        self.assertEqual(create_account(row), expected_value)
+        tests if account type provided is valid
+        """
         row = [
             "Michael",
             "Murwayi",
@@ -141,7 +131,7 @@ class TestBank(unittest.TestCase):
             420,
             "save",
             "Thika",
-            "+254746256084",
+            "0746256084",
         ]
         expected_value = (
             "provide valid account type",
@@ -152,7 +142,35 @@ class TestBank(unittest.TestCase):
                 420,
                 "save",
                 "Thika",
-                "+254746256084",
+                "0746256084",
+            ],
+        )
+
+        self.assertEqual(create_account(row), expected_value)
+
+    def test_validation_of_account_number(self):
+        """
+        tests if accountnumber is integer in accounts dictionary
+        """
+        row = [
+            "Michael",
+            "Murwayi",
+            "MichaelMurwayi",
+            "baba",
+            "fixed",
+            "Thika",
+            "0746256084",
+        ]
+        expected_value = (
+            "Account number must be a Number",
+            [
+                "Michael",
+                "Murwayi",
+                "MichaelMurwayi",
+                "baba",
+                "fixed",
+                "Thika",
+                "0746256084",
             ],
         )
 
