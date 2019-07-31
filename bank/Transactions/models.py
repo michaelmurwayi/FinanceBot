@@ -8,3 +8,6 @@ class Records(models.Model):
     transaction_type = models.CharField(max_length=10)
     previous_amount = models.IntegerField(default=0)
     current_amount = models.IntegerField(default=0)
+
+    class Meta:
+        app_label = "Transactions"
