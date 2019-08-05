@@ -2,7 +2,8 @@ from django.db import models
 
 # Create your models here.
 class Records(models.Model):
-    account_name = models.CharField(max_length=100)
+    id = models.AutoField(primary_key= True)
+    account_name = models.CharField(max_length=150)
     account_type = models.CharField(max_length=50)
     account_number = models.IntegerField(default=0)
     transaction_type = models.CharField(max_length=10)
