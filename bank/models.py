@@ -10,6 +10,7 @@ class Accounts(models.Model):
     account_type = models.CharField(max_length=10, blank=False, null=False)
     branch_name = models.CharField(max_length=25, blank=False, null=False)
     phonenumber = models.CharField(max_length=20, blank=False, null=False)
-   
+    # owner = models.ForeignKey('auth.User', related_name='Accounts', default= 1, on_delete=models.CASCADE)
+    
     class Meta:
         app_label = "Accounts"
