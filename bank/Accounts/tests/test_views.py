@@ -19,3 +19,34 @@ class TestAccountsViews(TestCase):
         self.client = Client()
         resp = self.client.get("/accounts/")
         self.assertEqual(resp.status_code, 200)
+<<<<<<< HEAD
+=======
+
+    def test_account_creation_view(self):
+        """
+        test the post method in views
+        """
+        Account.objects.filter(account_number='40200').delete()
+        self.client = APIClient()
+        resp = self.client.post(
+            "/accounts/",
+            {
+                "first_name": "Rein",
+                "second_name": "Rain",
+                "account_name": "ReinRain",
+                "account_number": 40200,
+                "account_type": "saving",
+                "branch_name": "Thika",
+                "phonenumber": "+254746256084",
+            }
+        )
+        self.assertEqual(resp.status_code, 201)
+    def test_accounts_update(self):
+        """
+        tests the put method  in the view
+        """
+        self.client = APIClient()
+        resp = self.client.put("/accounts/2/",{"account_number":"420420"})
+        import pdb; pdb.set_trace()
+        self.assertEqual(resp.status_code, 200) 
+>>>>>>> Tests for post method in views
