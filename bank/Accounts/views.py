@@ -1,4 +1,4 @@
-from .models import Accounts
+from .models import Account
 from Accounts.serializer import AccountsSerializer, UserSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
@@ -10,7 +10,7 @@ list all accounts or creates a new account
 
 
 class AccountsList(generics.ListCreateAPIView):
-    queryset = Accounts.objects.all()
+    queryset = Account.objects.all()
     serializer_class = AccountsSerializer
 
 
@@ -20,9 +20,9 @@ Retrieve , update or delete account
 
 
 class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Accounts.objects.all()
+    queryset = Account.objects.all()
     serializer_class = AccountsSerializer
-
+   
 
 """
 retrieve list of users in the db

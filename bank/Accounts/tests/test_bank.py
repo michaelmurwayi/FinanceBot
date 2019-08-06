@@ -1,8 +1,8 @@
 import unittest
 import sys
+sys.path.append("..")
+from Accounts.bank import create_account, create_accounts, create_accounts_from_csv
 
-sys.path.append("../")
-from bank import create_account, create_accounts, create_accounts_from_csv
 
 
 expected_value_for_account = {
@@ -18,7 +18,7 @@ expected_value_for_account = {
 
 expected_value_for_accounts = [
     {
-        "firstname": "Michael",
+        "firstname": "huncho",
         "lastname": "Murwayi",
         "accountname": "MichaelMurwayi",
         "accountnumber": 420,
@@ -54,7 +54,7 @@ class TestBank(unittest.TestCase):
     def test_create_accounts(self):
         rows = [
             [
-                "Michael",
+                "huncho",
                 "Murwayi",
                 "MichaelMurwayi",
                 420,
@@ -75,7 +75,7 @@ class TestBank(unittest.TestCase):
         self.assertEqual(create_accounts(rows), expected_value_for_accounts)
 
     def test_create_accounts_from_csv(self):
-        csv_file = "../accounts.csv"
+        csv_file = "Accounts/accounts.csv"
         self.assertEqual(
             create_accounts_from_csv(csv_file), expected_value_for_accounts
         )

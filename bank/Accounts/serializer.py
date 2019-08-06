@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Accounts.models import Accounts
+from .models import Account
 from django.contrib.auth.models import User
 
 
@@ -9,7 +9,7 @@ class AccountsSerializer(serializers.ModelSerializer):
     defines fields to be serialized
     """
     class Meta:
-        model = Accounts
+        model = Account
         fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber']
 
  
@@ -17,7 +17,7 @@ class AccountsSerializer(serializers.ModelSerializer):
         """
         Create and return a new user instance, given the validated data.
         """
-        import pdb; pdb.set_trace()
+        
         return Accounts.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
@@ -35,7 +35,7 @@ class AccountsSerializer(serializers.ModelSerializer):
         return instance
 
 class UserSerializer(serializers.ModelSerializer):
-    users = serializers.PrimaryKeyRelatedField(many=True, queryset=Accounts.objects.all())
+    users = serializers.PrimaryKeyRelatedField(many=True, queryset=Account.objects.all())
 
     class Meta:
         model = User

@@ -1,15 +1,16 @@
+import sys
+sys.path.append('..')
 from django.test import TestCase
-from .serializer import AccountsSerializer
-from unittest import TestCase
-from .models import Accounts
-
+from Accounts.serializer import AccountsSerializer
+from Accounts.models import Account
 
 class TestSerializer(TestCase):
     """
     test the serialization function
     """
+
     def test_AccountsSerializer(self):
-        objects = Accounts(
+        objects = Account(
             first_name="mike",
             second_name="Murwayi",
             account_name="mikemurwayi",
@@ -31,5 +32,5 @@ class TestSerializer(TestCase):
         }
 
         self.assertEqual(serializer.data, expected)
-class TestModels(Testcase):
-    def test_models(self):
+
+
