@@ -14,4 +14,10 @@ class Users(models.Model):
     phonenumber = models.CharField(max_length=20, blank=False, null=False)
 
     class Meta:
+<<<<<<< HEAD
         app_label = "Accounts"
+=======
+        app_label = "Account"
+    def __unicode__(self):
+        return self.account_number
+>>>>>>> test for Account models
