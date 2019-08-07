@@ -3,14 +3,24 @@ sys.path.append('..')
 from Accounts.models import Account
 from django.test import TestCase
 from django.test import Client
+from Accounts.views import AccountDetail
+from django.shortcuts import reverse
 from Accounts.serializer import AccountsSerializer
+<<<<<<< HEAD
 from django.urls import reverse
+=======
+from rest_framework.test import APIClient
+from rest_framework.test import APIRequestFactory
+>>>>>>> tests for get and post method in views
 
 class TestAccountsViews(TestCase):
     allow_database_queries = True
     """
     test views in account app
     """
+    def setup(self):
+        Account.object.create(first_name= 'Michael', second_name= 'Mulama', account_name='MichaelMulama', account_number='8080', account_type='saving',branch_name='Thika', phonenumber='0780808080')
+         
 
     def test_account_list_view(self):
         """
@@ -41,6 +51,7 @@ class TestAccountsViews(TestCase):
             }
         )
         self.assertEqual(resp.status_code, 201)
+<<<<<<< HEAD
     def test_accounts_update(self):
         """
         tests the put method  in the view
@@ -50,3 +61,6 @@ class TestAccountsViews(TestCase):
         import pdb; pdb.set_trace()
         self.assertEqual(resp.status_code, 200) 
 >>>>>>> Tests for post method in views
+=======
+    
+>>>>>>> tests for get and post method in views
