@@ -85,9 +85,6 @@ from rest_framework.test import APIRequestFactory
 
 from rest_framework.test import APIClient
 class TestAccountsViews(TestCase):
-    
-    def setUp(self):
-        Account.objects.create(first_name= 'Michael', second_name= 'Mulama', account_name='MichaelMulama', account_number='8080', account_type='saving',branch_name='Thika', phonenumber='0780808080') 
     """
     test views in account app
     """
@@ -134,12 +131,19 @@ class TestAccountsViews(TestCase):
 =======
     def test_accounts_update(self):
         """
-        tests the put method  in the view
+        tests the update method  in the view
         """
-        user= Account.objects.get(first_name= 'Michael')
+        user = Account.objects.get(account_number='42200')
         view = AccountDetail.as_view()
         factory = APIRequestFactory()
+<<<<<<< HEAD
         request = factory.put('/accounts/2 ', {'first_name':'Mikey'})
         resp = view(request, first_name= 'Michael')
         
 >>>>>>> test for get and post method in views
+=======
+        request = factory.patch('/accounts/2/ ', {'first_name':'Mikey'})
+        resp = view(request, pk=user.pk)
+        self.assertEqual(resp.status_code, 200)
+        
+>>>>>>> Test for the update view
