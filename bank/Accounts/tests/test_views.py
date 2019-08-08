@@ -1,7 +1,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> test for get and post method in views
+=======
+>>>>>>> test for views
 import sys
 sys.path.append('..')
 from Accounts.models import Account
@@ -10,6 +13,7 @@ from django.test import Client
 from Accounts.views import AccountDetail
 from django.shortcuts import reverse
 from Accounts.serializer import AccountsSerializer
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 from django.urls import reverse
@@ -82,6 +86,9 @@ class TestAccountsViews(TestCase):
 =======
 from rest_framework.test import APIRequestFactory
 >>>>>>> test for get and post method in views
+=======
+from rest_framework.test import APIRequestFactory
+>>>>>>> test for views
 
 from rest_framework.test import APIClient
 class TestAccountsViews(TestCase):
@@ -117,6 +124,7 @@ class TestAccountsViews(TestCase):
         self.assertEqual(resp.status_code, 201)
     
 <<<<<<< HEAD
+<<<<<<< HEAD
 #     def test_accounts_update(self):
 #         """
 #         tests the put method  in the view
@@ -129,6 +137,8 @@ class TestAccountsViews(TestCase):
 #         import pdb; pdb.set_trace()
 >>>>>>> test for Account models
 =======
+=======
+>>>>>>> test for views
     def test_accounts_update(self):
         """
         tests the update method  in the view
@@ -136,6 +146,7 @@ class TestAccountsViews(TestCase):
         user = Account.objects.get(account_number='42200')
         view = AccountDetail.as_view()
         factory = APIRequestFactory()
+<<<<<<< HEAD
 <<<<<<< HEAD
         request = factory.put('/accounts/2 ', {'first_name':'Mikey'})
         resp = view(request, first_name= 'Michael')
@@ -147,3 +158,9 @@ class TestAccountsViews(TestCase):
         self.assertEqual(resp.status_code, 200)
         
 >>>>>>> Test for the update view
+=======
+        request = factory.patch('/accounts/2/ ', {'first_name':'Mikey'})
+        resp = view(request, pk=user.pk)
+        self.assertEqual(resp.status_code, 200)
+        
+>>>>>>> test for views
