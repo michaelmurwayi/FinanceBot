@@ -15,7 +15,10 @@ def create_account(row):
         "branchname": row[5],
         "phonenumber": row[6],
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 78a7e4082813e6d67ddbab3671f12fed5ab8b4af
     if account["accounttype"] != "saving" and account["accounttype"] != "fixed":
         return "provide valid account type", row
     elif type(account["accountnumber"]) != int:
@@ -61,4 +64,7 @@ def check_for_blanks_in_accounts(account):
         return ("phonenumber is blank", account)
     else:
         return account
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78a7e4082813e6d67ddbab3671f12fed5ab8b4af
