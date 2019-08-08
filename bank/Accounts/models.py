@@ -15,9 +15,13 @@ class Users(models.Model):
 
     class Meta:
 <<<<<<< HEAD
+<<<<<<< HEAD
         app_label = "Accounts"
 =======
         app_label = "Account"
     def __unicode__(self):
         return self.account_number
 >>>>>>> test for Account models
+=======
+        app_label = "Accounts"
+>>>>>>> reset to origin branch
