@@ -22,6 +22,7 @@ class TestAccountsViews(TestCase):
         """
         self.client = Client()
         resp = self.client.get('/accounts/')
+        # import ipdb; ipdb.set_trace()
         self.assertEqual(resp.status_code, 200)
 
     def test_account_creation_view(self):
@@ -51,6 +52,6 @@ class TestAccountsViews(TestCase):
         user= Account.objects.get(first_name= 'Michael')
         view = AccountDetail.as_view()
         factory = APIRequestFactory()
-        request = factory.put('/accounts/2 ', {'first_name':'Mikey'})
-        resp = view(request, first_name= 'Michael')
-        import pdb; pdb.set_trace()
+        request = factory.patch('/accounts/', {'first_name':'Mikey'})
+        resp = view(request, pk= user.id)
+        self.assertEqual(resp.status_code,200)
