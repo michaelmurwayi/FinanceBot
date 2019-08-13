@@ -10,7 +10,7 @@ class AccountsSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Account
-        fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber']
+        fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber','owner']
 
  
     def create(self, validated_data):
@@ -33,3 +33,13 @@ class AccountsSerializer(serializers.ModelSerializer):
         instance.phonenumber= validated_data.get('phonenumber', instance.phonenumber)
         instance.save()
         return instance
+
+    from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    # Account = serializers.PrimaryKeyRelatedField(many=True, queryset=Account.objects.all())
+
+    class Meta:
+        model = User
+        # import pdb; pdb.set_trace()
+        fields = ['id', 'username']
