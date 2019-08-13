@@ -48,4 +48,4 @@ retrieve individual user account
 
 class OwnerDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    serializer_class = OwnerSerializer
+    serializer_class = OwnerSerializer  
