@@ -36,7 +36,7 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class OwnerSerializer(serializers.HyperlinkedModelSerializer):
-    owner = serializers.HyperlinkedRelatedField(many=True, view_name='Owner-detail', read_only=True)
+    owner = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True)
 
     class Meta:
         model = User
