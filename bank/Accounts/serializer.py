@@ -9,7 +9,7 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
     """
     class Meta:
         model = Account
-        fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber', 'owner']
+        fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber']
 
  
     def create(self, validated_data):
@@ -36,8 +36,8 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class OwnerSerializer(serializers.HyperlinkedModelSerializer):
-    owner = serializers.HyperlinkedRelatedField(many=True,view_name= 'OwnersList', queryset= User.objects.all())
-   
+    owner = serializers.HyperlinkedRelatedField(many=True, view_name='Owner-detail', read_only=True)
+
     class Meta:
         model = User
         fields = ['id', 'username', 'owner']
