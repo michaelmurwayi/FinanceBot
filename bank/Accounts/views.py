@@ -4,9 +4,8 @@ from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
 
-"""
-list all accounts or creates a new account
-"""
+
+# list all accounts or creates a new account
 
 
 class AccountsList(generics.ListCreateAPIView):
@@ -14,9 +13,9 @@ class AccountsList(generics.ListCreateAPIView):
     serializer_class = AccountsSerializer
 
 
-""" 
-Retrieve , update or delete account
-"""
+
+# Retrieve , update or delete account
+
 
 
 class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -24,9 +23,9 @@ class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AccountsSerializer
    
 
-"""
-retrieve list of users in the db
-"""
+
+# retrieve list of users in the db
+
 
 
 class UserList(generics.ListAPIView):
@@ -34,9 +33,9 @@ class UserList(generics.ListAPIView):
     serializer_class = UserSerializer
 
 
-"""
-retrieve individual user account
-"""
+
+# retrieve individual user account
+
 
 
 class UserDetail(generics.RetrieveAPIView):
