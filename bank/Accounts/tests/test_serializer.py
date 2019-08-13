@@ -5,9 +5,9 @@ from Accounts.serializer import AccountsSerializer
 from Accounts.models import Account
 
 class TestSerializer(TestCase):
-    """
-    test the serialization function
-    """
+   
+# test the serialization function
+   
 
     def test_AccountsSerializer(self):
         objects = Account(
