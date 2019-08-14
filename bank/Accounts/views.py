@@ -1,14 +1,15 @@
 <<<<<<< HEAD
 from .models import Account
 from Accounts.serializer import AccountsSerializer, OwnerSerializer
-from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from Accounts.permissions import IsOwnerOrReadOnly
 from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
+from rest_framework import viewsets
 
+<<<<<<< HEAD
+class AccountsViewSet(viewsets.ModelViewSet):
+=======
 """
 list all accounts or creates a new account
 """
@@ -51,8 +52,12 @@ from rest_framework import permissions
 
 # list all accounts or creates a new account
 >>>>>>> 72c8b97823d34f003d80545c37ccdc6fae0a274b
+>>>>>>> fc52c12f4c0514a995a6a66629f42e40204c774f
 
+# This viewset automatically provides list, create, retrieve,update and destroy actions for accounts.
 
+<<<<<<< HEAD
+=======
 class AccountsList(generics.ListCreateAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountsSerializer
@@ -77,31 +82,23 @@ Retrieve , update or delete account
 
 
 class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
+>>>>>>> fc52c12f4c0514a995a6a66629f42e40204c774f
     queryset = Account.objects.all()
     serializer_class = AccountsSerializer
 <<<<<<< HEAD
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,
-                      IsOwnerOrReadOnly]
+                          IsOwnerOrReadOnly]
 
 
-"""
-retrieve list of users in the db
-"""
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
+class OwnersViewSet(viewsets.ReadOnlyModelViewSet):
+#  This viewset automatically provides owners list and owners detail actions.
 
-class OwnersList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = OwnerSerializer
 
-
-"""
-retrieve individual user account
-"""
-
-
-class OwnerDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = OwnerSerializer  
 
 @api_view(['GET'])
 def api_root(request, format=None):

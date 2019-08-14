@@ -105,7 +105,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 class OwnerSerializer(serializers.HyperlinkedModelSerializer):
 <<<<<<< HEAD
+    owner = serializers.HyperlinkedRelatedField(many=True, view_name='user-detail', read_only=True)
+=======
+<<<<<<< HEAD
     owner = serializers.HyperlinkedRelatedField(many=True, view_name='Owner-detail', read_only=True)
+>>>>>>> fc52c12f4c0514a995a6a66629f42e40204c774f
 
     class Meta:
         model = User
