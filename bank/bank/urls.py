@@ -15,28 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
-from django.conf.urls import include
-from Accounts import views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('Accounts.url')),
-    path('api-auth/', include('rest_framework.urls')),
-    path('', views.api_root),
-
-=======
-<<<<<<< HEAD
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('Accounts.url'))
-=======
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Accounts.url')),
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
->>>>>>> 72c8b97823d34f003d80545c37ccdc6fae0a274b
 ]
