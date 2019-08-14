@@ -3,7 +3,12 @@ from .models import Account
 from django.contrib.auth.models import User
 
 
+<<<<<<< HEAD
+
+class AccountsSerializer(serializers.ModelSerializer):
+=======
 class AccountsSerializer(serializers.HyperlinkedModelSerializer):
+>>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
     """
     defines fields to be serialized
     """
@@ -17,7 +22,11 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
         Create and return a new user instance, given the validated data.
         """
         
+<<<<<<< HEAD
+        return Accounts.objects.create(**validated_data)
+=======
         return Account.objects.create(**validated_data)
+>>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
 
     def update(self, instance, validated_data):
         """
@@ -30,6 +39,17 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
         instance.account_type= validated_data.get('account_type', instance.account_type)
         instance.branch_name= validated_data.get('branch_name', instance.branch_name)
         instance.phonenumber= validated_data.get('phonenumber', instance.phonenumber)
+<<<<<<< HEAD
+        instance.save()
+        return instance
+
+class UserSerializer(serializers.ModelSerializer):
+    users = serializers.PrimaryKeyRelatedField(many=True, queryset=Account.objects.all())
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'users']
+=======
         owner = serializers.ReadOnlyField(source='owner.username')
         instance.save()
         return instance
@@ -41,3 +61,4 @@ class OwnerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'owner']
+>>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
