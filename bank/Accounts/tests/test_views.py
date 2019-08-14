@@ -22,7 +22,6 @@ class TestAccountsViews(TestCase):
         """
         self.client = Client()
         resp = self.client.get('/accounts/')
-        # import ipdb; ipdb.set_trace()
         self.assertEqual(resp.status_code, 200)
 
     def test_account_creation_view(self):
