@@ -1,42 +1,26 @@
 import unittest
 import sys
-<<<<<<< HEAD
-=======
 sys.path.append('../')
 from Accounts.bank import create_account, create_accounts, create_accounts_from_csv
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
 
 sys.path.append("../")
 from Accounts.bank import create_account, create_accounts, create_accounts_from_csv
 
 
 expected_value_for_account = {
-<<<<<<< HEAD
-    "firstname": "Michael ",
-=======
     "firstname": "huncho",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
     "accountname": "MichaelMurwayi",
     "lastname": "Murwayi",
     "accountnumber": 420,
     "accounttype": "saving",
-<<<<<<< HEAD
     "branchname": "Thika",
     "phonenumber": "0746256084",
-=======
-    "phonenumber": "0746256084",
-    "branchname": "Thika",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
 }
 
 
 expected_value_for_accounts = [
     {
-<<<<<<< HEAD
-        "firstname": "Michael",
-=======
         "firstname":"huncho",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
         "lastname": "Murwayi",
         "accountname": "MichaelMurwayi",
         "accountnumber": 420,
@@ -79,8 +63,6 @@ class TestBank(unittest.TestCase):
                 "saving",
                 "Thika",
                 "0746256084",
-<<<<<<< HEAD
-=======
             ],
             [
                 "Mark",
@@ -90,7 +72,6 @@ class TestBank(unittest.TestCase):
                 "fixed",
                 "kajiado",
                 "0790134102",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
             ],
             ["Mark", "Anderson", "MarkAnderson", 421, "fixed", "kajiado", "0790134102"],
         ]
