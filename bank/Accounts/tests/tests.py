@@ -1,64 +1,64 @@
 import unittest
 import sys
 sys.path.append('../')
-from bank import create_account, create_accounts, create_accounts_from_csv
+from Accounts.bank import create_account, create_accounts, create_accounts_from_csv
 
 
 
 expected_value_for_account = {
-    "first_name": "Michael ",
-    "account_name": "MichaelMurwayi",
-    "last_name": "Murwayi",
-    "account_number": 420,
-    "account_type": "saving",
-    "branch_name": "Thika",
-    "phonenumber": " +254746256084",
+    "firstname": "huncho",
+    "accountname": "MichaelMurwayi",
+    "lastname": "Murwayi",
+    "accountnumber": 420,
+    "accounttype": "saving",
+    "phonenumber": "0746256084",
+    "branchname": "Thika",
 }
 
 
 expected_value_for_accounts = [
     {
-        "first_name": "Michael",
-        "last_name": "Murwayi",
-        "account_name": "MichaelMurwayi",
-        "account_number": 420,
-        "account_type": "saving",
-        "branch_name": "Thika",
-        "phonenumber": "+254746256084",
+        "firstname":"huncho",
+        "lastname": "Murwayi",
+        "accountname": "MichaelMurwayi",
+        "accountnumber": 420,
+        "accounttype": "saving",
+        "branchname": "Thika",
+        "phonenumber": "0746256084",
     },
     {
-        "first_name": "Mark",
-        "last_name": "Anderson",
-        "account_name": "MarkAnderson",
-        "account_number": 421,
-        "account_type": "fixed",
-        "branch_name": "kajiado",
-        "phonenumber": "+254790134102",
+        "firstname": "Mark",
+        "lastname": "Anderson",
+        "accountname": "MarkAnderson",
+        "accountnumber": 421,
+        "accounttype": "fixed",
+        "branchname": "kajiado",
+        "phonenumber": "0790134102",
     },
 ]
 class TestBank(unittest.TestCase):
     def test_create_account(self):
         row = [
-            "Michael ",
+            "huncho",
             "Murwayi",
             "MichaelMurwayi",
             420,
             "saving",
             "Thika",
-            " +254746256084",
+            "0746256084",
         ]
         self.assertEqual(create_account(row), expected_value_for_account)
 
     def test_create_accounts(self):
         rows = [
             [
-                "Michael",
+                "huncho",
                 "Murwayi",
                 "MichaelMurwayi",
                 420,
                 "saving",
                 "Thika",
-                "+254746256084",
+                "0746256084",
             ],
             [
                 "Mark",
@@ -67,13 +67,14 @@ class TestBank(unittest.TestCase):
                 421,
                 "fixed",
                 "kajiado",
-                "+254790134102",
+                "0790134102",
             ],
         ]
         self.assertEqual(create_accounts(rows), expected_value_for_accounts)
 
     def test_create_accounts_from_csv(self):
-        csv_file = "../accounts.csv"
+        csv_file = "accounts.csv"
+        # import ipdb; ipdb.set_trace()
         self.assertEqual(
             create_accounts_from_csv(csv_file), expected_value_for_accounts
         )
