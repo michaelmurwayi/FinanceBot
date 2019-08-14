@@ -1,48 +1,30 @@
 import unittest
 import sys
-<<<<<<< HEAD
-=======
-sys.path.append('../')
+sys.path.append("..")
 from Accounts.bank import create_account, create_accounts, create_accounts_from_csv
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
 
-sys.path.append("../")
-from Accounts.bank import create_account, create_accounts, create_accounts_from_csv
 
 
 expected_value_for_account = {
-<<<<<<< HEAD
     "firstname": "Michael ",
-=======
-    "firstname": "huncho",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
     "accountname": "MichaelMurwayi",
     "lastname": "Murwayi",
     "accountnumber": 420,
     "accounttype": "saving",
-<<<<<<< HEAD
     "branchname": "Thika",
-    "phonenumber": "0746256084",
-=======
-    "phonenumber": "0746256084",
-    "branchname": "Thika",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
+    "phonenumber": " +254746256084",
 }
 
 
 expected_value_for_accounts = [
     {
-<<<<<<< HEAD
-        "firstname": "Michael",
-=======
-        "firstname":"huncho",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
+        "firstname": "huncho",
         "lastname": "Murwayi",
         "accountname": "MichaelMurwayi",
         "accountnumber": 420,
         "accounttype": "saving",
         "branchname": "Thika",
-        "phonenumber": "0746256084",
+        "phonenumber": "+254746256084",
     },
     {
         "firstname": "Mark",
@@ -51,7 +33,7 @@ expected_value_for_accounts = [
         "accountnumber": 421,
         "accounttype": "fixed",
         "branchname": "kajiado",
-        "phonenumber": "0790134102",
+        "phonenumber": "+254790134102",
     },
 ]
 
@@ -59,13 +41,13 @@ expected_value_for_accounts = [
 class TestBank(unittest.TestCase):
     def test_create_account(self):
         row = [
-            "huncho",
+            "Michael ",
             "Murwayi",
             "MichaelMurwayi",
             420,
             "saving",
             "Thika",
-            "0746256084",
+            " +254746256084",
         ]
         self.assertEqual(create_account(row), expected_value_for_account)
 
@@ -78,9 +60,7 @@ class TestBank(unittest.TestCase):
                 420,
                 "saving",
                 "Thika",
-                "0746256084",
-<<<<<<< HEAD
-=======
+                "+254746256084",
             ],
             [
                 "Mark",
@@ -89,22 +69,19 @@ class TestBank(unittest.TestCase):
                 421,
                 "fixed",
                 "kajiado",
-                "0790134102",
->>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
+                "+254790134102",
             ],
-            ["Mark", "Anderson", "MarkAnderson", 421, "fixed", "kajiado", "0790134102"],
         ]
         self.assertEqual(create_accounts(rows), expected_value_for_accounts)
 
     def test_create_accounts_from_csv(self):
-        csv_file = "accounts.csv"
-        # import ipdb; ipdb.set_trace()
+        csv_file = "Accounts/accounts.csv"
         self.assertEqual(
             create_accounts_from_csv(csv_file), expected_value_for_accounts
         )
 
     def test_validation_of_firstname(self):
-        row = ["", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "0746256084"]
+        row = ["", "Murwayi", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"]
         expected_value = (
             "firstname is blank",
             {
@@ -114,14 +91,14 @@ class TestBank(unittest.TestCase):
                 "accountnumber": 420,
                 "accounttype": "saving",
                 "branchname": "Thika",
-                "phonenumber": "0746256084",
+                "phonenumber": "+254746256084",
             },
         )
 
         self.assertEqual(create_account(row), expected_value)
 
     def test_validation_of_lastname(self):
-        row = ["Michael", "", "MichaelMurwayi", 420, "saving", "Thika", "0746256084"]
+        row = ["Michael", "", "MichaelMurwayi", 420, "saving", "Thika", "+254746256084"]
         expected_value = (
             "lastname is blank",
             {
@@ -131,7 +108,7 @@ class TestBank(unittest.TestCase):
                 "accountnumber": 420,
                 "accounttype": "saving",
                 "branchname": "Thika",
-                "phonenumber": "0746256084",
+                "phonenumber": "+254746256084",
             },
         )
         self.assertEqual(create_account(row), expected_value)
@@ -144,7 +121,7 @@ class TestBank(unittest.TestCase):
             "baba",
             "saving",
             "Thika",
-            "0746256084",
+            "+254746256084",
         ]
         expected_value = (
             "Account number must be a Number",
@@ -155,7 +132,7 @@ class TestBank(unittest.TestCase):
                 "baba",
                 "saving",
                 "Thika",
-                "0746256084",
+                "+254746256084",
             ],
         )
 
@@ -169,7 +146,7 @@ class TestBank(unittest.TestCase):
             420,
             "save",
             "Thika",
-            "0746256084",
+            "+254746256084",
         ]
         expected_value = (
             "provide valid account type",
@@ -180,7 +157,7 @@ class TestBank(unittest.TestCase):
                 420,
                 "save",
                 "Thika",
-                "0746256084",
+                "+254746256084",
             ],
         )
 
