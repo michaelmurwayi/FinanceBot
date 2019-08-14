@@ -8,6 +8,17 @@ class Account(models.Model):
     second_name = models.CharField(max_length=60, blank=False, null=False)
     account_name = models.CharField(max_length=100, blank=False, null=False)
     account_number = models.IntegerField(unique=True, blank=False, null=False)
+    account_type = models.CharField(max_length=10, blank=False, null=False)
+    branch_name = models.CharField(max_length=25, blank=False, null=False)
+    phonenumber = models.CharField(max_length=20, blank=False, null=False)
+    owner = models.ForeignKey('auth.User', related_name='Accounts', on_delete=models.CASCADE)
+
+=======
+<<<<<<< HEAD
+    first_name = models.CharField(max_length=60, blank=False, null=False)
+    second_name = models.CharField(max_length=60, blank=False, null=False)
+    account_name = models.CharField(max_length=100, blank=False, null=False)
+    account_number = models.IntegerField(unique=True, blank=False, null=False)
 =======
     first_name = models.CharField(max_length=50, blank=False, null=False)
     second_name = models.CharField(max_length=50, blank=False, null=False)
@@ -18,13 +29,20 @@ class Account(models.Model):
     branch_name = models.CharField(max_length=25, blank=False, null=False)
     phonenumber = models.CharField(max_length=20, blank=False, null=False)
    
+>>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
     class Meta:
 <<<<<<< HEAD
         app_label = "Account"
 =======
         app_label = "Accounts"
+<<<<<<< HEAD
+    def __unicode__(self):
+        return self.id
+
+=======
     
 
     def __unicode__(self):
         return self.id
 >>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
+>>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5

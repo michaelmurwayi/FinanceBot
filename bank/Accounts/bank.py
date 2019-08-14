@@ -39,8 +39,8 @@ def create_accounts(rows):
 
 
 def create_accounts_from_csv(csvfile):
-    accounts = []
     with open(csvfile, "r") as csvfile:
+        accounts = []
         reader = csv.reader(csvfile)
         for row in reader:
             accounts.append(create_account(row))

@@ -7,14 +7,23 @@ from django.contrib.auth.models import User
 
 class AccountsSerializer(serializers.ModelSerializer):
 =======
+<<<<<<< HEAD
+
+class AccountsSerializer(serializers.ModelSerializer):
+=======
 class AccountsSerializer(serializers.HyperlinkedModelSerializer):
 >>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
+>>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
     """
     defines fields to be serialized
     """
     class Meta:
         model = Account
+<<<<<<< HEAD
+        fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber','owner']
+=======
         fields = ['id','first_name', 'second_name', 'account_name', 'account_number', 'account_type', 'branch_name', 'phonenumber']
+>>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
 
  
     def create(self, validated_data):
@@ -23,10 +32,14 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
         """
         
 <<<<<<< HEAD
+        return Account.objects.create(**validated_data)
+=======
+<<<<<<< HEAD
         return Accounts.objects.create(**validated_data)
 =======
         return Account.objects.create(**validated_data)
 >>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
+>>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
 
     def update(self, instance, validated_data):
         """
@@ -39,6 +52,20 @@ class AccountsSerializer(serializers.HyperlinkedModelSerializer):
         instance.account_type= validated_data.get('account_type', instance.account_type)
         instance.branch_name= validated_data.get('branch_name', instance.branch_name)
         instance.phonenumber= validated_data.get('phonenumber', instance.phonenumber)
+<<<<<<< HEAD
+        instance.save()
+        return instance
+
+    from django.contrib.auth.models import User
+
+class UserSerializer(serializers.ModelSerializer):
+    # Account = serializers.PrimaryKeyRelatedField(many=True, queryset=Account.objects.all())
+
+    class Meta:
+        model = User
+        # import pdb; pdb.set_trace()
+        fields = ['id', 'username']
+=======
 <<<<<<< HEAD
         instance.save()
         return instance
@@ -62,3 +89,4 @@ class OwnerSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['id', 'username', 'owner']
 >>>>>>> 7c9c84d836d4bcd2d90e49866605abce2e40086c
+>>>>>>> 7b59037953268f4ae51fd33f8cf7f34be74744f5
