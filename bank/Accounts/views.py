@@ -11,6 +11,8 @@ class AccountsViewSet(viewsets.ModelViewSet):
     # This viewset automatically provides list, create, retrieve,update and destroy actions for accounts.
     queryset = Account.objects.all()
     serializer_class = AccountsSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly,
+                      IsOwnerOrReadOnly]
 
 class OwnersViewSet(viewsets.ReadOnlyModelViewSet):
     #  This viewset automatically provides owners list and owners detail actions.
