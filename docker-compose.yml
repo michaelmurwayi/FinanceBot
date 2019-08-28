@@ -6,6 +6,7 @@ services:
       MYSQL_DATABASE: djangodocker_db
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: docker
   app:
     restart: always
     build: . 
@@ -18,4 +19,4 @@ services:
       - "8000:8000"
     depends_on:
       - db
-  
+    
