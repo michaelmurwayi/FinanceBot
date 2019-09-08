@@ -84,12 +84,14 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'NAME': 'bank',
-        'USER': 'root',
-        'password': '',
-    }
+    'ENGINE': 'django.db.backends.mysql', 
+    'NAME': 'djangodocker_db',
+    'USER': 'docker',
+    'PASSWORD': 'docker',
+    'HOST': 'db', # Or an IP Address that your DB is hosted on
+    'PORT': '3306',
+
+}
 }
 
 
