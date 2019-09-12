@@ -12,7 +12,7 @@ def create_record(row):
 	"transactionamount": float(row[6]),
 	}
 	
-	return validation_for_blanks(record)
+	return record
 
 
 def create_records(rows):
@@ -33,22 +33,6 @@ def get_records_from_csv(csv_file):
 			records.append(create_record(row))
 	print(records)
 	return records
-
-def validation_for_blanks(record):
-	if record["accountname"] == "":
-		return "Account Name cannot be  blank", row
-	elif record["accounttype"] == "":
-		return ("Account Type cannot be  blank", row)
-	elif "branchname" == "":
-		return ("branchname Name cannot be  blank", row)
-	elif record["phonenumber"] == "":
-		return ("Phonenumber cannot be  blank", row)
-	elif record["transcationtype"] == "":
-		return ("transactin Type cannot be  blank", row)
-	elif record["accountnumber"] == "":
-		return ("Account Number cannot be  blank", row)
-
-	return record
 
 if __name__ == '__main__':
 	row = ['', 'fixed', '420', '2000.00', 'withdraw', 'Thika', '0745454545']
