@@ -4,10 +4,11 @@ from django.db import models
 class Records(models.Model):
     account_name = models.CharField(max_length=100)
     account_type = models.CharField(max_length=50)
-    account_number = models.IntegerField(default=0)
+    branch_name = models.CharField(max_length=50)
+    phonenumber = models.IntegerField(default=0)
     transaction_type = models.CharField(max_length=10)
-    previous_amount = models.IntegerField(default=0)
-    current_amount = models.IntegerField(default=0)
+    account_number = models.IntegerField(default=0)
+    transaction_amount = models.FloatField(null=True, default=None)
 
     class Meta:
         app_label = "Transactions"
