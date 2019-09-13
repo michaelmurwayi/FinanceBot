@@ -15,7 +15,7 @@ def create_account(row):
         "branchname": row[5],
         "phonenumber": row[6],
     }
-    
+    import ipdb;ipdb.set_trace()    
     if account["accounttype"] != "saving" and account["accounttype"] != "fixed":
         return "provide valid account type", row
     elif type(account["accountnumber"]) != int:
@@ -62,3 +62,5 @@ def check_for_blanks_in_accounts(account):
     else:
         return account
 
+if __name__ == '__main__':
+	create_accounts_from_csv('accounts.csv')
