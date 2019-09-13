@@ -2,6 +2,7 @@ import unittest
 from record_transactions import create_record, create_records, get_records_from_csv
 
 expected_value_for_record = {
+
     "accountname": "MichaelMurwayi",
     "accounttype": "fixed",
     "branchname": "Thika",
@@ -34,7 +35,8 @@ expected_value_for_records = [
 
 
 class TestRecordTransactions(unittest.TestCase):
-    # maxDiff = None
+  """ Test for all functions in the get record module"""
+   # maxDiff = None
 
     def test_create_record(self):
         """ create record from single row"""
@@ -52,7 +54,6 @@ class TestRecordTransactions(unittest.TestCase):
 
     def test_create_records(self):
         """ test creation of records from multiple rows"""
-
         rows = [
             [
                 "MichaelMurwayi",
@@ -78,7 +79,6 @@ class TestRecordTransactions(unittest.TestCase):
 
     def test_get_record(self):
         """ test function to get records from csv file """
-
         self.assertEqual(
             get_records_from_csv("transaction.csv"), expected_value_for_records
         )
@@ -220,7 +220,6 @@ class TestRecordTransactions(unittest.TestCase):
         )
 
         self.assertEqual(create_record(row), expected_value)
-
 
 if __name__ == "__main__":
     unittest.main()

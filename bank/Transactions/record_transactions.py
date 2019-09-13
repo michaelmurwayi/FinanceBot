@@ -29,10 +29,10 @@ def get_records_from_csv(csv_file):
 		records = []
 		csv_reader = csv.reader(csv_file)
 		for row in csv_reader:
-			# import ipdb;ipdb.set_trace()
-			records.append(create_record(row))
-	
+			records.append(create_record(row)
+            
 	return records
+
 def validation_for_blanks(record):
     """ check for blanks in data recieved from files"""
 
