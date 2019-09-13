@@ -8,11 +8,11 @@ def create_record(row):
 	"branchname": row[2],
 	"phonenumber": row[3],
 	"transactiontype": row[4],
-	"accountnumber ": row[5],
+	"accountnumber": int(row[5]),
 	"transactionamount": float(row[6]),
 	}
 	
-	return record
+	return validation_for_blanks(record)
 
 
 def create_records(rows):
@@ -29,10 +29,25 @@ def get_records_from_csv(csv_file):
 		records = []
 		csv_reader = csv.reader(csv_file)
 		for row in csv_reader:
-			# import ipdb;ipdb.set_trace()
-			records.append(create_record(row))
-	print(records)
+			records.append(create_record(row)
+            
 	return records
+
+def validation_for_blanks(record):
+    """ check for blanks in data recieved from files"""
+
+    if record["accountname"] == "":
+        return("Account Name cannot be  blank", record)
+    elif record["accounttype"] == "":
+        return ("Account Type cannot be  blank", record)
+    elif record["branchname"] == "":
+        return ("branchname cannot be  blank", record)
+    elif record["phonenumber"] == "":
+        return ("Phonenumber cannot be  blank", record)
+    elif record["transactiontype"] == "":
+        return ("Transaction Type cannot be  blank", record)
+ 
+    return record
 
 if __name__ == '__main__':
 	row = ['', 'fixed', '420', '2000.00', 'withdraw', 'Thika', '0745454545']
