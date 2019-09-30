@@ -29,7 +29,7 @@ def get_records_from_csv(csv_file):
 		records = []
 		csv_reader = csv.reader(csv_file)
 		for row in csv_reader:
-			records.append(create_record(row)
+			records.append(create_record(row))
             
 	return records
 
@@ -49,9 +49,3 @@ def validation_for_blanks(record):
  
     return record
 
-if __name__ == '__main__':
-	row = ['', 'fixed', '420', '2000.00', 'withdraw', 'Thika', '0745454545']
-	rows = [['MichaelMurwayi', 'fixed', '420', '2000.00', 'withdraw', 'Thika', '0745454545'],['MarkIndasi', 'savings', '423', '1057.36', 'deposit', "Mang'u", '0735353535']]
-	create_record(row)
-	# create_records(rows)
-	# get_records_from_csv('transaction.csv')

@@ -10,7 +10,7 @@ from django.conf import settings
 from record_transactions import get_records_from_csv
 from Transactions.models import Records
 def add_record():
-	data = get_records_from_csv('transaction.csv')
+	data = get_records_from_csv('transactions,.csv')
 	
 	for items in data:
 		Record_entry = Records(
