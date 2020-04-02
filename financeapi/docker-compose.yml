@@ -1,0 +1,22 @@
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: djangodocker_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_ROOT_PASSWORD: docker
+  app:
+    restart: always
+    build: . 
+    command: "python3 bank/manage.py makemigrations" 
+    command: "python3 bank/manage.py migrate" 
+    command: "python3 bank/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/finance
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    
