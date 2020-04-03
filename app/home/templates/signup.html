@@ -1,0 +1,127 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+    <meta name="HandheldFriendly" content="true">
+
+    <title>huncho bills</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+    <!-- custom styles (optional) -->
+    <link rel="stylesheet" href="{%static 'css/style.css' %}" />
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css"
+        rel="stylesheet">
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+</head>
+
+<style>
+    .rgba-gradient {
+        background: -moz-linear-gradient(45deg, black, rgba(29, 210, 177, 0.7) 100%);
+        background: -webkit-linear-gradient(45deg, black, rgba(29, 210, 177, 0.7) 100%);
+        background: -webkit-gradient(linear, 45deg, from(black), to(rgba(29, 210, 177, 0.7)));
+        background: -o-linear-gradient(45deg, black, rgba(29, 210, 177, 0.7) 100%);
+        background: linear-gradient(to 45deg, black, rgba(29, 210, 177, 0.7) 100%);
+    }
+
+    .card {
+        position: fixed;
+        width: 50%;
+        left: 300;
+        margin: 100px;
+        /* background-color: black; */
+
+    }
+
+    .form-header {
+        height: 50px;
+        text-align: center;
+        font-size: 10;
+    }
+
+    .form-content {
+        margin: 50px;
+    }
+
+    .btn {
+        /* position: relative; */
+        left: 250px;
+    }
+
+    .terms {
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <main class="container-fluid">
+        <!--Form with header-->
+        <div class="card col-md-offset-2">
+            <div class="navigation">
+                <nav class="navbar navbar-expand-lg navbar-dark rgba-gradient">
+                    <div class="container">
+                        <a class="navbar-brand" href="#"><strong>SIGN UP PAGE</strong></a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Link</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <form method="POST">
+                <div class="form-content">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <p>
+                        <label class="badge  badge-info">{{ field.label_tag }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                    {% endfor %}
+                </div>
+            </form>
+            <button class="btn  btn-info rgba-gradient" type="submit">Sign up</button>
+            <div class="terms m-3">
+                <!-- Terms of service -->
+                <p>By clicking
+                    <em>Sign up</em> you agree to our
+                    <a href="" target="_blank">terms of service</a>
+            </div>
+
+
+        </div>
+    </main>
+
+</body>
