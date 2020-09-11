@@ -10,6 +10,9 @@ class HomeView(TemplateView):
 
 class SignupView(generic.CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy('profile/')
+    success_url = reverse_lazy('profile')
     template_name = 'signup.html'
 
+class AccountView(TemplateView):
+    template_name = 'profile.html'
+    

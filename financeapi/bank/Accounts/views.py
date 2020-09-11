@@ -21,9 +21,9 @@ class OwnersViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = OwnerSerializer
 
 
-# @api_view(['GET'])
-# def api_root(request, format=None):
-#     return Response({
-#         'Accounts': reverse('Accounts-list', request=request, format=format),
-#         'Owners': reverse('Owners-list', request=request, format=format)
-#     })
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'Accounts': reverse('Accounts-list', request=request, format=format),
+        'Owners': reverse('Owners-list', request=request, format=format)
+    })

@@ -1,14 +1,15 @@
 import mysql.connector
-from bank import create_accounts_from_csv
+from bank import *
 
 db = mysql.connector.connect(
-    host="localhost", user="root", password="", database="bank"
+    host="localhost", user="huncho", password="c11h28no3", database="bank"
 )
 
 cursor = db.cursor()
 
 
 def create_table_in_db():
+    import ipdb;ipdb.set_trace()
     cursor.execute(
         "CREATE TABLE account(firstname varchar(255),lastname varchar(255),accountname varchar(255),accountnumber int, accounttype varchar(255), branchname varchar(255),phonenumber varchar(255))"
     )

@@ -1,0 +1,71 @@
+{% load static %}
+<!Doctype html>
+<html>
+    <head>
+        <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+    </head>
+    <style>
+        .body{
+            background-color: grey;
+        }
+        .navbar{
+            height: 100%;
+            position: relative;
+            left: 0;
+            
+        }
+        
+    </style>
+    <body class="row card m-4">
+        <div class="container-fluid aqua-gradient">
+
+            <div class="col-md-4  navbar text-center card ">
+                <div class="logo mt-5">
+
+                    <h3><strong><b><i>Huncho Bills</i></b></strong></h3>
+                    <img class="mt-5" src="{% static 'img/profile.png' %}" style="width: 90%; height: 200px;">
+            </div>
+            <div class="navigation ml-5">
+                <div class="nav-items  mt-5">
+                    <button class="btn btn-primary">
+                        Home
+                    </button>
+                </div>
+                <div class="nav-items  mt-2">
+                    <button class="btn btn-primary">
+                        Login
+                    </button>
+                </div>
+                <div class="nav-items  mt-2">
+                    <button class="btn btn-primary">
+                        Registration
+                    </button>
+                </div>
+                <div class="nav-items  mt-2 ">
+                    <button class="btn btn-warning">
+                        How To use
+                    </button>
+                </div>
+                <div class="nav-items  mt-2">
+                    <button class="btn btn-danger">
+                        Log-Out
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-8">
+            
+        </div>
+        
+    </div>
+    </body>
+    
+</html>
